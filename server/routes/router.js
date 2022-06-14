@@ -1,16 +1,24 @@
 const express = require('express')
 const route = express.Router()
 
-route.get('/', (req,res)=>{
-    res.render('index')
-})
+const servises = require('../services/render')
 
-route.get('/add-user', (req,res)=>{
-    res.render('add_user')
-})
+/**
+ * @description Home Roote
+ * @method GET /
+ */
+route.get('/', servises.homeRoutes)
 
-route.get('/update-user', (req,res)=>{
-    res.render('update_user')
-})
+/**
+ * @description add user
+ * @method GET /add-user
+ */
+route.get('/add-user', servises.add_ser)
+
+/**
+ * @description update-user
+ * @method GET /update-user
+ */
+route.get('/update-user', servises.update_user)
 
 module.exports = route
