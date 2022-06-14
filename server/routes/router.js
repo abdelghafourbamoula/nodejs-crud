@@ -24,7 +24,7 @@ route.get('/update-user', servises.update_user)
 
 // API 
 route.post('/api/users', controller.create)
-route.post('/api/users', controller.find)
+route.get('/api/users', controller.find)
 route.post('/api/users/:id', controller.update)
 route.post('/api/users/:id', controller.delete)
 

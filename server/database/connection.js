@@ -1,13 +1,11 @@
-const mongose = require('mongose');
+const mongose = require('mongoose');
 
-const connectDB = async () => {
+let connectDB = async () => {
     try {
         // mongodb connection string 
         let con = await mongose.connect(process.env.MONGO_URI, {
-            useNewParser: true,
-            useUnifedTopology: true,
-            useFindAndModify: false,
-            useCreateIndex: true
+            useNewUrlParser: true, 
+            useUnifiedTopology: true 
         })
         console.log(`MongoDB Connected:${con.connection.host}`)
 
@@ -17,4 +15,4 @@ const connectDB = async () => {
     }
 }
 
-module.export = connectDB;
+module.exports = connectDB;
