@@ -64,7 +64,7 @@ exports.update = (req, res) => {
     })
 }
 
-// delet specified user by id
+// delet specified user by his
 exports.delete = (req, res) => {
     
 }
