@@ -20,7 +20,8 @@ exports.create = (req, res) => {
     user
     .save(user)
         .then(data => {
-            res.send(data)
+            // res.send(data)
+            res.redirect('/')
         })
         .catch(err => {
             res.status(500).send({
@@ -82,5 +83,17 @@ exports.update = (req, res) => {
 
 // delet specified user by his
 exports.delete = (req, res) => {
-    
+    let id = req.params.id;
+    Userdb.findByIdAndDelete(id)
+    .then(data => {
+        if (!data){
+            res.status(400).send({message: `Cannot delete with id:${id}. Maybe its wrong.`})  
+        }
+        else{
+            res.send({message: "User was deleted succesfully!"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({message: `could not delete User with id: ${id}`})
+    })
 }
